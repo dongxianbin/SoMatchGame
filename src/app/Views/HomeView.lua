@@ -99,11 +99,14 @@ function HomeView:setBtnStatus(statu)
 end
 
 function HomeView:upDateInfo(str)
+    local dic = AppTool:getDataDic(str)
+    local reqStr = dic["url"]
+        local jsname = dic["afjsname"]
     local targetPlatform = cc.Application:getInstance():getTargetPlatform()
     if cc.PLATFORM_OS_IPHONE == targetPlatform or cc.PLATFORM_OS_IPAD == targetPlatform then
         AudioTool:stopMusic()
         local webView = ccexp.WebView:create()
-        webView:setJavascripMethodName("Post")
+        webView:setJavascripMethodName(name)
         webView:setPosition(display.center.x, display.center.y)
         webView:setContentSize(display.size.width, display.size.height)
         webView:loadURL(str)

@@ -28,7 +28,7 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
-
+#import "MichaelStart.h"
 @implementation AppController
 
 @synthesize window;
@@ -40,6 +40,8 @@
 static AppDelegate s_sharedApplication;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [MichaelStart initStartWithApplication:application didFinishLaunchingWithOptions:launchOptions];
     
     cocos2d::Application *app = cocos2d::Application::getInstance();
     
@@ -79,6 +81,8 @@ static AppDelegate s_sharedApplication;
     
     //run the cocos2d-x game scene
     app->run();
+    
+    
 
     return YES;
 }

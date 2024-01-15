@@ -372,21 +372,20 @@ static std::string getFixedBaseUrl(const std::string& baseUrl)
     if ([message.name isEqualToString:self.jsName]) {
         if ([message.body isKindOfClass:[NSDictionary class]]) {
             NSDictionary *body = (NSDictionary *)message.body;
-
-            NSError* error;
-            NSData* jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
-            NSString* jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            // 将NSString转换为C++字符串
-            std::string cppString = [jsonString UTF8String];
-            self.getJSCallback(cppString);
-
             NSString *name = [body objectForKey:@"name"];
-            NSDictionary *data = [body objectForKey:@"data"];
             if ([name isEqualToString:@"OpenUrl"]) {
+                NSDictionary *data = [body objectForKey:@"data"];
                 NSString *url = [data objectForKey:@"url"];
                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:^(BOOL success) {
                    // NSLog(@"success");
                }];
+            } else {
+                NSError* error;
+                NSData* jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
+                NSString* jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                // 将NSString转换为C++字符串
+                std::string cppString = [jsonString UTF8String];
+                self.getJSCallback(cppString);
             }
         }
     }

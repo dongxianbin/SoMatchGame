@@ -14,6 +14,7 @@ function GameScene:initData()
     SceneTool = require("src.app.Tools.SceneTool")
     AudioTool = require("src.app.Tools.AudioTool")
     UserDefaulTool = require("src.app.Tools.UserDefaulTool")
+    AppTool = require("src.app.Tools.AppTool")
     BirdUpTool = require("src.app.Tools.BirdUpTool")
     HttpTool = require("src.app.Tools.HttpTool")
     

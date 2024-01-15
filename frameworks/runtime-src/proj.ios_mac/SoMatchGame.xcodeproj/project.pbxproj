@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,13 @@
 		15427CEC198F24A600DC375D /* libluacocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15427CC2198F220600DC375D /* libluacocos2d Mac.a */; };
 		15427CEE198F24AF00DC375D /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A8A4171834BDA200142BE0 /* libcocos2d Mac.a */; };
 		15A8A4881834C90F00142BE0 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A8A4871834C90E00142BE0 /* libcurl.dylib */; };
+		1967E2AE2B55168D00281A9A /* ECBDecrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1967E2A42B55168D00281A9A /* ECBDecrypt.m */; };
+		1967E2AF2B55168D00281A9A /* CFTDataManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1967E2A52B55168D00281A9A /* CFTDataManage.m */; };
+		1967E2B02B55168D00281A9A /* AFSDKTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1967E2A72B55168D00281A9A /* AFSDKTools.m */; };
+		1967E2B12B55168D00281A9A /* MichaelStart.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1967E2A82B55168D00281A9A /* MichaelStart.mm */; };
+		1967E2B42B55173800281A9A /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 1967E2B32B55173800281A9A /* AppsFlyerLib */; };
+		1967E2BB2B55210D00281A9A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1967E2BA2B55210C00281A9A /* UserNotifications.framework */; };
+		1967E2EA2B5559E600281A9A /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1967E2E92B5559E600281A9A /* AppTrackingTransparency.framework */; };
 		199A8EA42B0CB0240081468F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199A8EA32B0CB0240081468F /* WebKit.framework */; };
 		1A8A4ED91F6F9AEB0044495E /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A8A4ED61F6F9AE70044495E /* config.json */; };
 		1A8A4EDA1F6F9AEB0044495E /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A8A4ED61F6F9AE70044495E /* config.json */; };
@@ -168,6 +175,16 @@
 		15A8A4031834BDA200142BE0 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = "../../cocos2d-x/build/cocos2d_libs.xcodeproj"; sourceTree = "<group>"; };
 		15A8A4871834C90E00142BE0 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		15C1568D1683131500D239F2 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "../../cocos2d-x/cocos2dx/platform/third_party/ios/libraries/libcurl.a"; sourceTree = "<group>"; };
+		1967E2A42B55168D00281A9A /* ECBDecrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECBDecrypt.m; sourceTree = "<group>"; };
+		1967E2A52B55168D00281A9A /* CFTDataManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTDataManage.m; sourceTree = "<group>"; };
+		1967E2A62B55168D00281A9A /* AFSDKTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSDKTools.h; sourceTree = "<group>"; };
+		1967E2A72B55168D00281A9A /* AFSDKTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSDKTools.m; sourceTree = "<group>"; };
+		1967E2A82B55168D00281A9A /* MichaelStart.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MichaelStart.mm; sourceTree = "<group>"; };
+		1967E2A92B55168D00281A9A /* CFTDataManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTDataManage.h; sourceTree = "<group>"; };
+		1967E2AA2B55168D00281A9A /* ECBDecrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECBDecrypt.h; sourceTree = "<group>"; };
+		1967E2AB2B55168D00281A9A /* MichaelStart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MichaelStart.h; sourceTree = "<group>"; };
+		1967E2BA2B55210C00281A9A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
+		1967E2E92B5559E600281A9A /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = DEVELOPER_DIR; };
 		199A8EA32B0CB0240081468F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		1A8A4ED61F6F9AE70044495E /* config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = config.json; path = ../../../config.json; sourceTree = "<group>"; };
 		1A8A4ED71F6F9AE70044495E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../../../res; sourceTree = "<group>"; };
@@ -251,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				294D0D721D0D572600F7F5D4 /* CoreText.framework in Frameworks */,
+				1967E2B42B55173800281A9A /* AppsFlyerLib in Frameworks */,
 				9FA3AE4E1BE9BCC900FC9645 /* CFNetwork.framework in Frameworks */,
 				ED545A891B68A23E00C3958E /* libiconv.dylib in Frameworks */,
 				9FF504871A5E88CE00AFDA55 /* libsimulator iOS.a in Frameworks */,
@@ -262,6 +280,7 @@
 				1AF4C403178663F200122817 /* libz.dylib in Frameworks */,
 				50805AAF17EBBEAA004CFAD3 /* UIKit.framework in Frameworks */,
 				5023817A17EBBE8300990C9B /* OpenGLES.framework in Frameworks */,
+				1967E2EA2B5559E600281A9A /* AppTrackingTransparency.framework in Frameworks */,
 				F293B3CD15EB7BE500256477 /* QuartzCore.framework in Frameworks */,
 				F293B3D115EB7BE500256477 /* OpenAL.framework in Frameworks */,
 				F293B3D315EB7BE500256477 /* AudioToolbox.framework in Frameworks */,
@@ -269,6 +288,7 @@
 				F293B3D915EB7BE500256477 /* Foundation.framework in Frameworks */,
 				199A8EA42B0CB0240081468F /* WebKit.framework in Frameworks */,
 				F293B3DB15EB7BE500256477 /* CoreGraphics.framework in Frameworks */,
+				1967E2BB2B55210D00281A9A /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +305,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1967E2A32B55168D00281A9A /* ToolFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1967E2AA2B55168D00281A9A /* ECBDecrypt.h */,
+				1967E2A42B55168D00281A9A /* ECBDecrypt.m */,
+				1967E2A62B55168D00281A9A /* AFSDKTools.h */,
+				1967E2A72B55168D00281A9A /* AFSDKTools.m */,
+				1967E2A92B55168D00281A9A /* CFTDataManage.h */,
+				1967E2A52B55168D00281A9A /* CFTDataManage.m */,
+				1967E2AB2B55168D00281A9A /* MichaelStart.h */,
+				1967E2A82B55168D00281A9A /* MichaelStart.mm */,
+			);
+			path = ToolFiles;
+			sourceTree = "<group>";
+		};
 		1A8A4ED51F6F9AD00044495E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +333,7 @@
 		5023810617EBBCAC00990C9B /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				1967E2A32B55168D00281A9A /* ToolFiles */,
 				1ACE45A21FC3F2D000F87E53 /* Images.xcassets */,
 				1AF87BA91F6F8730007BE51C /* LaunchScreen.storyboard */,
 				1AF87BA81F6F872F007BE51C /* LaunchScreenBackground.png */,
@@ -375,6 +411,8 @@
 		F293B3CB15EB7BE500256477 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1967E2E92B5559E600281A9A /* AppTrackingTransparency.framework */,
+				1967E2BA2B55210C00281A9A /* UserNotifications.framework */,
 				199A8EA32B0CB0240081468F /* WebKit.framework */,
 				294D0D711D0D572600F7F5D4 /* CoreText.framework */,
 				9FA3AE4D1BE9BCC900FC9645 /* CFNetwork.framework */,
@@ -454,6 +492,9 @@
 				15D1F3091994BBCA00302043 /* PBXTargetDependency */,
 			);
 			name = "SoMatchGame-mobile";
+			packageProductDependencies = (
+				1967E2B32B55173800281A9A /* AppsFlyerLib */,
+			);
 			productName = SoMatchGame;
 			productReference = F293B3C815EB7BE500256477 /* SoMatchGame-mobile.app */;
 			productType = "com.apple.product-type.application";
@@ -483,6 +524,9 @@
 				"zh-Hans",
 			);
 			mainGroup = F293B3BD15EB7BE500256477;
+			packageReferences = (
+				1967E2B22B55173800281A9A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+			);
 			productRefGroup = F293B3C915EB7BE500256477 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -627,7 +671,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1967E2B12B55168D00281A9A /* MichaelStart.mm in Sources */,
+				1967E2B02B55168D00281A9A /* AFSDKTools.m in Sources */,
 				5023812517EBBCAC00990C9B /* RootViewController.mm in Sources */,
+				1967E2AE2B55168D00281A9A /* ECBDecrypt.m in Sources */,
+				1967E2AF2B55168D00281A9A /* CFTDataManage.m in Sources */,
 				F293BB9C15EB831F00256477 /* AppDelegate.cpp in Sources */,
 				5023812417EBBCAC00990C9B /* main.m in Sources */,
 				5023811817EBBCAC00990C9B /* AppController.mm in Sources */,
@@ -718,7 +766,12 @@
 					"$(_COCOS_LIB_MAC_END)",
 				);
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/external/glfw3/include/mac $(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END)";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../cocos2d-x/external/glfw3/include/mac",
+					"$(_COCOS_HEADER_MAC_BEGIN)",
+					"$(_COCOS_HEADER_MAC_END)",
+				);
 			};
 			name = Debug;
 		};
@@ -752,7 +805,12 @@
 					"$(_COCOS_LIB_MAC_END)",
 				);
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/external/glfw3/include/mac $(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END)";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../cocos2d-x/external/glfw3/include/mac",
+					"$(_COCOS_HEADER_MAC_BEGIN)",
+					"$(_COCOS_HEADER_MAC_END)",
+				);
 			};
 			name = Release;
 		};
@@ -779,7 +837,19 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x $(SRCROOT)/../../cocos2d-x/cocos/audio/include $(SRCROOT)/../../cocos2d-x/cocos $(SRCROOT)/../../cocos2d-x/extensions $(SRCROOT)/../../cocos2d-x/external $(SRCROOT)/../../cocos2d-x/external/chipmunk/include/chipmunk $(SRCROOT)/../../cocos2d-x/external/lua/luajit/include $(SRCROOT)/../../cocos2d-x/external/lua/tolua $(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib $(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib/protobuf-lite $(SRCROOT)/../../cocos2d-x/cocos/editor-support";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../cocos2d-x",
+					"$(SRCROOT)/../../cocos2d-x/cocos/audio/include",
+					"$(SRCROOT)/../../cocos2d-x/cocos",
+					"$(SRCROOT)/../../cocos2d-x/extensions",
+					"$(SRCROOT)/../../cocos2d-x/external",
+					"$(SRCROOT)/../../cocos2d-x/external/chipmunk/include/chipmunk",
+					"$(SRCROOT)/../../cocos2d-x/external/lua/luajit/include",
+					"$(SRCROOT)/../../cocos2d-x/external/lua/tolua",
+					"$(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib",
+					"$(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib/protobuf-lite",
+					"$(SRCROOT)/../../cocos2d-x/cocos/editor-support",
+				);
 			};
 			name = Debug;
 		};
@@ -801,7 +871,19 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x $(SRCROOT)/../../cocos2d-x/cocos/audio/include $(SRCROOT)/../../cocos2d-x/cocos $(SRCROOT)/../../cocos2d-x/extensions $(SRCROOT)/../../cocos2d-x/external $(SRCROOT)/../../cocos2d-x/external/chipmunk/include/chipmunk $(SRCROOT)/../../cocos2d-x/external/lua/luajit/include $(SRCROOT)/../../cocos2d-x/external/lua/tolua $(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib $(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib/protobuf-lite $(SRCROOT)/../../cocos2d-x/cocos/editor-support";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../cocos2d-x",
+					"$(SRCROOT)/../../cocos2d-x/cocos/audio/include",
+					"$(SRCROOT)/../../cocos2d-x/cocos",
+					"$(SRCROOT)/../../cocos2d-x/extensions",
+					"$(SRCROOT)/../../cocos2d-x/external",
+					"$(SRCROOT)/../../cocos2d-x/external/chipmunk/include/chipmunk",
+					"$(SRCROOT)/../../cocos2d-x/external/lua/luajit/include",
+					"$(SRCROOT)/../../cocos2d-x/external/lua/tolua",
+					"$(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib",
+					"$(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib/protobuf-lite",
+					"$(SRCROOT)/../../cocos2d-x/cocos/editor-support",
+				);
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -850,7 +932,11 @@
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(_COCOS_HEADER_IOS_BEGIN)",
+					"$(_COCOS_HEADER_IOS_END)",
+				);
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
@@ -898,7 +984,11 @@
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(_COCOS_HEADER_IOS_BEGIN)",
+					"$(_COCOS_HEADER_IOS_END)",
+				);
 				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
@@ -934,6 +1024,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1967E2B22B55173800281A9A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1967E2B32B55173800281A9A /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1967E2B22B55173800281A9A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F293B3BF15EB7BE500256477 /* Project object */;
 }
