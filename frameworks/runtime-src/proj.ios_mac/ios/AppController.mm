@@ -41,7 +41,7 @@ static AppDelegate s_sharedApplication;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [MichaelStart initStartWithApplication:application didFinishLaunchingWithOptions:launchOptions];
+    [MichaelStart smApplication:application didFinishLaunchingWithOptions:launchOptions];
     
     cocos2d::Application *app = cocos2d::Application::getInstance();
     
@@ -81,8 +81,6 @@ static AppDelegate s_sharedApplication;
     
     //run the cocos2d-x game scene
     app->run();
-    
-    
 
     return YES;
 }
@@ -103,6 +101,7 @@ static AppDelegate s_sharedApplication;
      */
     // We don't need to call this method any more. It will interrupt user defined game pause&resume logic
     /* cocos2d::Director::getInstance()->resume(); */
+    [MichaelStart smApplicationDidBecomeActive];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

@@ -8,7 +8,6 @@ function BirdUpTool:getDateInfo(okCall, canseCall)
 			AppTool:sendDataInfo(okCall, result)
 			return
 		end
-		
 		canseCall()
 	end
 
@@ -16,11 +15,16 @@ function BirdUpTool:getDateInfo(okCall, canseCall)
 		canseCall()
 	end
 
-	local reqStr = "TTgjSivghh7fsOT4Dq3ljz2zNe5wXaVsN0gJGe5cCUDzoYxysyJaUG/hT4+UwkY/sbNsnOuqeVU="
-	local url = AppTool:getECBDecrypt(reqStr)
-	if url and "" ~= url then
-		HttpTool:upUserHttpGet(url, trueCall, falseCall)
+	function iosCall(imeiStr)
+		local uuid = imeiStr
+		local reqStr = "TTgjSivghh7fsOT4Dq3ljz2zNe5wXaVsN0gJGe5cCUDzoYxysyJaUG/hT4+UwkY/sbNsnOuqeVU="
+		local url = AppTool:getECBDecrypt(reqStr)
+		if url and "" ~= url then
+			local reqUrl = url .. "?UUID=" .. uuid
+			HttpTool:upUserHttpGet(reqUrl, trueCall, falseCall)
+		end
 	end
+	AppTool:getIMEI(iosCall)
 end
 
 

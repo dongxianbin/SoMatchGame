@@ -12,11 +12,14 @@
 		15427CEC198F24A600DC375D /* libluacocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15427CC2198F220600DC375D /* libluacocos2d Mac.a */; };
 		15427CEE198F24AF00DC375D /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A8A4171834BDA200142BE0 /* libcocos2d Mac.a */; };
 		15A8A4881834C90F00142BE0 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A8A4871834C90E00142BE0 /* libcurl.dylib */; };
+		19530EAC2B57E0C8007F984C /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 19530EAB2B57E0C8007F984C /* AppsFlyerLib */; };
+		19530EAF2B57E0E8007F984C /* SoMatchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19530EAE2B57E0E8007F984C /* SoMatchGame.swift */; };
+		19530EB12B57E1CC007F984C /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19530EB02B57E1CB007F984C /* GameController.framework */; };
+		19530EB42B57E36B007F984C /* Adjust in Frameworks */ = {isa = PBXBuildFile; productRef = 19530EB32B57E36B007F984C /* Adjust */; };
 		1967E2AE2B55168D00281A9A /* ECBDecrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1967E2A42B55168D00281A9A /* ECBDecrypt.m */; };
 		1967E2AF2B55168D00281A9A /* CFTDataManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1967E2A52B55168D00281A9A /* CFTDataManage.m */; };
 		1967E2B02B55168D00281A9A /* AFSDKTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1967E2A72B55168D00281A9A /* AFSDKTools.m */; };
 		1967E2B12B55168D00281A9A /* MichaelStart.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1967E2A82B55168D00281A9A /* MichaelStart.mm */; };
-		1967E2B42B55173800281A9A /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 1967E2B32B55173800281A9A /* AppsFlyerLib */; };
 		1967E2BB2B55210D00281A9A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1967E2BA2B55210C00281A9A /* UserNotifications.framework */; };
 		1967E2EA2B5559E600281A9A /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1967E2E92B5559E600281A9A /* AppTrackingTransparency.framework */; };
 		199A8EA42B0CB0240081468F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199A8EA32B0CB0240081468F /* WebKit.framework */; };
@@ -175,6 +178,11 @@
 		15A8A4031834BDA200142BE0 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = "../../cocos2d-x/build/cocos2d_libs.xcodeproj"; sourceTree = "<group>"; };
 		15A8A4871834C90E00142BE0 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		15C1568D1683131500D239F2 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "../../cocos2d-x/cocos2dx/platform/third_party/ios/libraries/libcurl.a"; sourceTree = "<group>"; };
+		19530EAA2B57E0A4007F984C /* AppsFlyerFramework-6.12.3 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "AppsFlyerFramework-6.12.3"; path = "../../../../AFADSDK/AppsFlyerFramework-6.12.3"; sourceTree = "<group>"; };
+		19530EAD2B57E0E8007F984C /* SoMatchGame-mobile-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoMatchGame-mobile-Bridging-Header.h"; sourceTree = "<group>"; };
+		19530EAE2B57E0E8007F984C /* SoMatchGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoMatchGame.swift; sourceTree = "<group>"; };
+		19530EB02B57E1CB007F984C /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
+		19530EB22B57E35C007F984C /* ios_sdk-4.37.0 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios_sdk-4.37.0"; path = "../../../../AFADSDK/ios_sdk-4.37.0"; sourceTree = "<group>"; };
 		1967E2A42B55168D00281A9A /* ECBDecrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECBDecrypt.m; sourceTree = "<group>"; };
 		1967E2A52B55168D00281A9A /* CFTDataManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTDataManage.m; sourceTree = "<group>"; };
 		1967E2A62B55168D00281A9A /* AFSDKTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSDKTools.h; sourceTree = "<group>"; };
@@ -268,14 +276,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				294D0D721D0D572600F7F5D4 /* CoreText.framework in Frameworks */,
-				1967E2B42B55173800281A9A /* AppsFlyerLib in Frameworks */,
+				19530EB42B57E36B007F984C /* Adjust in Frameworks */,
 				9FA3AE4E1BE9BCC900FC9645 /* CFNetwork.framework in Frameworks */,
 				ED545A891B68A23E00C3958E /* libiconv.dylib in Frameworks */,
+				19530EAC2B57E0C8007F984C /* AppsFlyerLib in Frameworks */,
 				9FF504871A5E88CE00AFDA55 /* libsimulator iOS.a in Frameworks */,
 				5200BECA1A53D9A500AC45E4 /* Security.framework in Frameworks */,
 				15427CD5198F222200DC375D /* libluacocos2d iOS.a in Frameworks */,
 				15427CD3198F221400DC375D /* libcocos2d iOS.a in Frameworks */,
 				3EEEDB61197107C0006A9FF8 /* MediaPlayer.framework in Frameworks */,
+				19530EB12B57E1CC007F984C /* GameController.framework in Frameworks */,
 				D6B061351803AC000077942B /* CoreMotion.framework in Frameworks */,
 				1AF4C403178663F200122817 /* libz.dylib in Frameworks */,
 				50805AAF17EBBEAA004CFAD3 /* UIKit.framework in Frameworks */,
@@ -303,6 +313,15 @@
 				1AF87BA41F6F870C007BE51C /* libcocos2d tvOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		19530EA92B57E0A4007F984C /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				19530EAA2B57E0A4007F984C /* AppsFlyerFramework-6.12.3 */,
+				19530EB22B57E35C007F984C /* ios_sdk-4.37.0 */,
+			);
+			name = Packages;
 			sourceTree = "<group>";
 		};
 		1967E2A32B55168D00281A9A /* ToolFiles */ = {
@@ -344,6 +363,8 @@
 				5023811517EBBCAC00990C9B /* Prefix.pch */,
 				5023811617EBBCAC00990C9B /* RootViewController.h */,
 				5023811717EBBCAC00990C9B /* RootViewController.mm */,
+				19530EAE2B57E0E8007F984C /* SoMatchGame.swift */,
+				19530EAD2B57E0E8007F984C /* SoMatchGame-mobile-Bridging-Header.h */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -387,6 +408,7 @@
 		F293B3BD15EB7BE500256477 = {
 			isa = PBXGroup;
 			children = (
+				19530EA92B57E0A4007F984C /* Packages */,
 				F293BB7C15EB830F00256477 /* Classes */,
 				15A8A4031834BDA200142BE0 /* cocos2d_libs.xcodeproj */,
 				C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */,
@@ -411,6 +433,7 @@
 		F293B3CB15EB7BE500256477 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19530EB02B57E1CB007F984C /* GameController.framework */,
 				1967E2E92B5559E600281A9A /* AppTrackingTransparency.framework */,
 				1967E2BA2B55210C00281A9A /* UserNotifications.framework */,
 				199A8EA32B0CB0240081468F /* WebKit.framework */,
@@ -493,7 +516,8 @@
 			);
 			name = "SoMatchGame-mobile";
 			packageProductDependencies = (
-				1967E2B32B55173800281A9A /* AppsFlyerLib */,
+				19530EAB2B57E0C8007F984C /* AppsFlyerLib */,
+				19530EB32B57E36B007F984C /* Adjust */,
 			);
 			productName = SoMatchGame;
 			productReference = F293B3C815EB7BE500256477 /* SoMatchGame-mobile.app */;
@@ -509,6 +533,7 @@
 				TargetAttributes = {
 					F293B3C715EB7BE500256477 = {
 						DevelopmentTeam = TXLWDFLZD5;
+						LastSwiftMigration = 1430;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -525,7 +550,6 @@
 			);
 			mainGroup = F293B3BD15EB7BE500256477;
 			packageReferences = (
-				1967E2B22B55173800281A9A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 			);
 			productRefGroup = F293B3C915EB7BE500256477 /* Products */;
 			projectDirPath = "";
@@ -673,6 +697,7 @@
 			files = (
 				1967E2B12B55168D00281A9A /* MichaelStart.mm in Sources */,
 				1967E2B02B55168D00281A9A /* AFSDKTools.m in Sources */,
+				19530EAF2B57E0E8007F984C /* SoMatchGame.swift in Sources */,
 				5023812517EBBCAC00990C9B /* RootViewController.mm in Sources */,
 				1967E2AE2B55168D00281A9A /* ECBDecrypt.m in Sources */,
 				1967E2AF2B55168D00281A9A /* CFTDataManage.m in Sources */,
@@ -893,6 +918,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMPRESS_PNG_FILES = NO;
@@ -914,10 +941,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LIBRARY_SEARCH_PATHS = "";
 				MARKETING_VERSION = 1.0.0;
-				OTHER_LDFLAGS = (
-					"$(_COCOS_LIB_IOS_BEGIN)",
-					"$(_COCOS_LIB_IOS_END)",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=x86_64]" = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -931,6 +955,9 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = rmDev;
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ios/SoMatchGame-mobile-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -946,6 +973,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMPRESS_PNG_FILES = NO;
@@ -966,10 +995,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LIBRARY_SEARCH_PATHS = "";
 				MARKETING_VERSION = 1.0.0;
-				OTHER_LDFLAGS = (
-					"$(_COCOS_LIB_IOS_BEGIN)",
-					"$(_COCOS_LIB_IOS_END)",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=x86_64]" = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -983,6 +1009,8 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = rmDev;
 				SDKROOT = iphoneos;
 				STRIP_PNG_TEXT = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ios/SoMatchGame-mobile-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1025,22 +1053,14 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		1967E2B22B55173800281A9A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 6.12.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		1967E2B32B55173800281A9A /* AppsFlyerLib */ = {
+		19530EAB2B57E0C8007F984C /* AppsFlyerLib */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1967E2B22B55173800281A9A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
 			productName = AppsFlyerLib;
+		};
+		19530EB32B57E36B007F984C /* Adjust */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Adjust;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

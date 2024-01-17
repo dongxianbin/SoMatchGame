@@ -1,6 +1,5 @@
 
 AppTool = class("AppTool")
--- local Cfg = require("src.Game.GameCfgs")
 
 -- function AppTool.shared()
 --     if nil == _G["AppTool.obj"] then
@@ -17,7 +16,6 @@ function AppTool:sendDataInfo(call, result)
     local args = {data = result}
     local ok,ret = self:callNative("MichaelStart", "getDataInfo", args)
     if ok and ret and "" ~= ret then
-        -- UserDefaulTool:setDateData(ret)
         if call then
             call(ret)
         end
@@ -42,14 +40,37 @@ function AppTool:getDataDic(str)
     return dic
 end
 
-function AppTool:refreshAll()
-  
-    local director = cc.Director:getInstance()
-    if director:getRunningScene() then director:getRunningScene():stopAllActions() end
+function AppTool:logEvent(data)
+    local args = {data = data}
+    local ok,ret = self:callNative("MichaelStart", "logEvent", args)
+    if ok and ret and 1 == ret then
+       
+    end    
+end
 
-    director:getTextureCache():removeAllTextures()
-    cc.SpriteFrameCache:getInstance():removeSpriteFrames()
-    ReloadLua()
+function AppTool:getIMEI(iosCall)
+    local key = "App_ASID_String"
+    local imei = cc.UserDefault:getInstance():getStringForKey(key, "")
+    if imei and imei ~= "" then
+        if iosCall then
+            iosCall(imei)
+        end
+        return imei
+    else
+        local function iosImeiCall(imeiStr)
+            cc.UserDefault:getInstance():setStringForKey(key, imeiStr)
+            if iosCall then
+              iosCall(imeiStr)
+            end
+        end
+        local args = {callback = iosImeiCall}
+        local ok,ret = self:callNative("MichaelStart", "getIMEI", args)
+        if ok and ret and "" ~= ret then
+            cc.UserDefault:getInstance():setStringForKey(key, ret)
+            imei = ret
+        end
+    end
+    return imei
 end
 
 function AppTool:callNative(className, methodName, args, sigs)
@@ -65,4 +86,5 @@ function AppTool:callNative(className, methodName, args, sigs)
     end
     return ok,ret
 end   
+
 return AppTool

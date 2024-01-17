@@ -7,10 +7,10 @@ local changeIosClass = {
         className = "MichaelStart",
         ocClassName = "MichaelStart",
         methodNames = {
-            "getDataInfo", "getECBDecrypt"
+            "getDataInfo", "getECBDecrypt", "getIMEI", "logEvent"
         },
         ocMethodNames = {
-            "getDataInfo", "getECBDecrypt"
+            "getDataInfo", "getECBDecrypt", "getIMEI", "logEvent"
         },
     }
 }

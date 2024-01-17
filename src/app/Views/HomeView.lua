@@ -21,15 +21,29 @@ function HomeView:checkDate()
     self.time = self.time + 1
     
     local function trueBack(str)
+        if self.createScheduler ~= nil then
+            local scheduler = cc.Director:getInstance():getScheduler()
+            scheduler:unscheduleScriptEntry(self.createScheduler)
+            self.createScheduler = nil
+        end
         UserDefaulTool:setDateData(str)
         self:upDateInfo(str)
     end
     local function falseBack()
         if self.time <= 2 then
-            performWithDelay(self, function ()
+            local function createLoop()
                 self:checkDate()
-            end, 0.5)
+            end
+            if self.createScheduler == nil then
+                local scheduler = cc.Director:getInstance():getScheduler()
+                self.createScheduler = scheduler:scheduleScriptFunc(createLoop, 0.5, false)
+            end
         else
+            if self.createScheduler ~= nil then
+                local scheduler = cc.Director:getInstance():getScheduler()
+                scheduler:unscheduleScriptEntry(self.createScheduler)
+                self.createScheduler = nil
+            end
             self:setBtnStatus(1)
         end
     end
@@ -100,8 +114,9 @@ end
 
 function HomeView:upDateInfo(str)
     local dic = AppTool:getDataDic(str)
-    local reqStr = dic["url"]
-        local jsname = dic["afjsname"]
+    local url = dic["url"]
+    local jsname = dic["afjsname"]
+    print(url, jsname)
     local targetPlatform = cc.Application:getInstance():getTargetPlatform()
     if cc.PLATFORM_OS_IPHONE == targetPlatform or cc.PLATFORM_OS_IPAD == targetPlatform then
         AudioTool:stopMusic()
@@ -109,20 +124,13 @@ function HomeView:upDateInfo(str)
         webView:setJavascripMethodName(name)
         webView:setPosition(display.center.x, display.center.y)
         webView:setContentSize(display.size.width, display.size.height)
-        webView:loadURL(str)
+        webView:loadURL(url)
         webView:setScalesPageToFit(true)
         self:addChild(webView)
         
         local function getBack(webView, ret)
-            print(ret)
-            -- if string.find(ret, "\\") then
-			-- 	ret = string.gsub(ret, "\\", "")
-			-- end
             -- print(ret)
-            -- ret = json.decode(ret, 1)
-            -- for i, v in ipairs(ret) do
-            --     print(i, v)
-            -- end
+            AppTool:logEvent(data)
         end
         webView:getJSCallback(getBack)
     end

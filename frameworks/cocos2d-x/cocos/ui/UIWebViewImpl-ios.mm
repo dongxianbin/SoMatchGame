@@ -367,26 +367,26 @@ static std::string getFixedBaseUrl(const std::string& baseUrl)
 
 #pragma mark - WKScriptMessageHandler
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-//    NSLog(@"message.name:%@", message.name);
-//    NSLog(@"message.body:%@", message.body);
+    NSLog(@"message.name:%@", message.name);
+    NSLog(@"message.body:%@", message.body);
     if ([message.name isEqualToString:self.jsName]) {
         if ([message.body isKindOfClass:[NSDictionary class]]) {
             NSDictionary *body = (NSDictionary *)message.body;
             NSString *name = [body objectForKey:@"name"];
-            if ([name isEqualToString:@"OpenUrl"]) {
-                NSDictionary *data = [body objectForKey:@"data"];
-                NSString *url = [data objectForKey:@"url"];
-               [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:^(BOOL success) {
-                   // NSLog(@"success");
-               }];
-            } else {
+            // if ([name isEqualToString:@"OpenUrl"]) {
+            //     NSDictionary *data = [body objectForKey:@"data"];
+            //     NSString *url = [data objectForKey:@"url"];
+            //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:^(BOOL success) {
+            //        // NSLog(@"success");
+            //    }];
+            // } else {
                 NSError* error;
                 NSData* jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
                 NSString* jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
                 // 将NSString转换为C++字符串
                 std::string cppString = [jsonString UTF8String];
                 self.getJSCallback(cppString);
-            }
+            // }
         }
     }
 }

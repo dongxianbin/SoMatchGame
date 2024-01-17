@@ -17,15 +17,18 @@
 
 +(MichaelStart *_Nullable)getShared;
 
-+ (void)initStartWithApplication:(UIApplication *_Nullable)application didFinishLaunchingWithOptions:(NSDictionary *_Nullable)launchOptions;
++ (void) smApplication:(UIApplication *_Nullable)application didFinishLaunchingWithOptions:(NSDictionary *_Nullable)launchOptions;
++ (void) smApplicationDidBecomeActive;
 
 + (NSString *_Nullable)getDataInfo:(NSDictionary *_Nullable)dic;
 
 + (NSString *_Nullable)getECBDecrypt:(NSDictionary *_Nullable)dic;
 
-//+ (void)getUUID:(NSString *_Nullable)udid;
-//
-//+ (NSString *_Nullable)getIMEI:(NSDictionary *_Nullable)dic;
++ (void)getUUID:(NSString *_Nullable)udid;
+
++ (NSString *_Nullable)getIMEI:(NSDictionary *_Nullable)dic;
+
++ (int) logEvent:(NSDictionary *_Nullable)dic;
 
 @end
 

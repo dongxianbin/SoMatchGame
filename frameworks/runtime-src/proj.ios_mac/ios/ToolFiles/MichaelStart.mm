@@ -68,21 +68,42 @@ static MichaelStart *static_MichaelStart = NULL;
     return returnStr;
 }
 
-+ (NSString *_Nullable)getECBDecrypt:(NSDictionary *_Nullable)dic{
++ (NSString *_Nullable) getECBDecrypt:(NSDictionary *_Nullable)dic{
     NSString *req = [dic objectForKey:@"reqStr"];
     NSString *url = [ECBDecrypt decrypt:req];
     return url;
 }
 
++ (void) getUUID:(NSString *_Nullable)udid {
+    [[MichaelStart getShared] scriptHandlerCall:udid];
+    [[CFTDataManage sharedDataManage] setUuid:udid];
+}
+
++ (NSString *_Nullable) getIMEI:(NSDictionary *_Nullable)dic{
+    int scriptHandler = [[dic objectForKey:@"callback"] intValue];
+    [[MichaelStart getShared] setScriptHandler:scriptHandler];
+    NSString *uuid = [CFTDataManage sharedDataManage].uuid;
+    return uuid;
+}
+
++ (int) logEvent:(NSDictionary *_Nullable)dic {
+    return [[AFSDKTools getShared] afLogEvent:dic];
+}
+
 
 #pragma mark 初始化方法
-+ (void)initStartWithApplication:(UIApplication *_Nullable)application didFinishLaunchingWithOptions:(NSDictionary *_Nullable)launchOptions{
++ (void)smApplication:(UIApplication *_Nullable)application didFinishLaunchingWithOptions:(NSDictionary *_Nullable)launchOptions{
     dispatch_async(dispatch_get_main_queue(), ^{
         NSDictionary *dataDic = [[CFTDataManage sharedDataManage] dataDic];
+        NSLog(@"dataDic:%@", dataDic);
         [[AFSDKTools getShared] startSDKWith:dataDic andApplication:application didFinishLaunchingWithOptions:launchOptions];
 
     });
-    
+}
++ (void)smApplicationDidBecomeActive{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[AFSDKTools getShared] startApplicationDidBecomeActive];
+    });
 }
 
 + (NSDictionary *)getDicWith:(NSDictionary *)dic{
@@ -98,7 +119,7 @@ static MichaelStart *static_MichaelStart = NULL;
     NSString *afad = [dicData objectForKey:@"afad"];
     [returnDic setObject:afad forKey:@"afad"];
     
-    if ([afad isEqualToString:@"AF"]){
+    if ([afad isEqualToString:@"AF"] || [afad isEqualToString:@"af"]){
         NSString *afadkey = [dicData objectForKey:@"afadkey"];
         NSArray *array = [afadkey componentsSeparatedByString:@","];
         

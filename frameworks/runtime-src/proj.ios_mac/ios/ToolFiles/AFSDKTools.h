@@ -11,9 +11,12 @@
 
 @interface AFSDKTools : NSObject
 +(AFSDKTools *_Nullable)getShared;
-- (void)startSDKWith:(NSDictionary *_Nullable)dic andApplication:(UIApplication *_Nullable)application didFinishLaunchingWithOptions:(NSDictionary *_Nullable)launchOptions;
-- (void)sendLogEvent:(NSString *_Nullable)name withValues:(NSDictionary *_Nullable)message;
+- (void) startSDKWith:(NSDictionary *_Nullable)dic andApplication:(UIApplication *_Nullable)application didFinishLaunchingWithOptions:(NSDictionary *_Nullable)launchOptions;
+- (void) startApplicationDidBecomeActive;
+- (void) sendLogEvent:(NSString *_Nullable)name withValues:(NSDictionary *_Nullable)message;
 
-- (void)refreshSDKWith:(NSDictionary *_Nullable)dic;
+- (void) refreshSDKWith:(NSDictionary *_Nullable)dic;
+
+- (int) afLogEvent:(NSDictionary *_Nonnull)dic;
 @end
 
