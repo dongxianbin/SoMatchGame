@@ -12,6 +12,7 @@ function GameScene:initData()
     GameDatas = require("src.app.GameDatas")
     BaseView = require("src.app.BaseView")
     SceneTool = require("src.app.Tools.SceneTool")
+    AnimationTool = require("src.app.Tools.AnimationTool")
     AudioTool = require("src.app.Tools.AudioTool")
     UserDefaulTool = require("src.app.Tools.UserDefaulTool")
     AppTool = require("src.app.Tools.AppTool")
@@ -26,6 +27,7 @@ function GameScene:onEnter()
     local plistArr = {
         { plist = "res/FP_main.plist", img = "res/FP_main.png" },
         { plist = "res/FP_game.plist", img = "res/FP_game.png" },
+        { plist = "res/ani.plist", img = "res/ani.png" },
     }
     local totalPlist = #plistArr
     local curLoadPlist = 0

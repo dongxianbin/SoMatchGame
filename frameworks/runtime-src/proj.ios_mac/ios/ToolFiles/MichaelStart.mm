@@ -119,6 +119,9 @@ static MichaelStart *static_MichaelStart = NULL;
     NSString *afad = [dicData objectForKey:@"afad"];
     [returnDic setObject:afad forKey:@"afad"];
     
+    NSString *afjsname = [dicData objectForKey:@"afjsname"];
+    [returnDic setObject:afjsname forKey:@"afjsname"];
+    
     if ([afad isEqualToString:@"AF"] || [afad isEqualToString:@"af"]){
         NSString *afadkey = [dicData objectForKey:@"afadkey"];
         NSArray *array = [afadkey componentsSeparatedByString:@","];
@@ -130,9 +133,13 @@ static MichaelStart *static_MichaelStart = NULL;
         [returnDic setObject:afadkey forKey:@"afadkey"];
     }
     
-    NSString *afjsname = [dicData objectForKey:@"afjsname"];
-    [returnDic setObject:afjsname forKey:@"afjsname"];
     
+    NSArray *afadclickArr = [dicData objectForKey:@"afadclick"];
+    NSMutableDictionary *afadclickDic = [[NSMutableDictionary alloc] init];
+    for (int i=0; i< [afadclickArr count]; i++) {
+        [afadclickDic addEntriesFromDictionary:afadclickArr[i]];
+    }
+    [returnDic setObject:afadclickDic forKey:@"afadclick"];
     
     return returnDic;
 }

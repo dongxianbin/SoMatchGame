@@ -150,22 +150,25 @@ static std::string getFixedBaseUrl(const std::string& baseUrl)
 
 - (void)setupWebView {
     if (!self.wkWebView) {
-        self.wkWebView = [[WKWebView alloc] init];
-        self.wkWebView.UIDelegate = self;
-        self.wkWebView.navigationDelegate = self;
+        // self.wkWebView = [[WKWebView alloc] init];
+        // self.wkWebView.UIDelegate = self;
+        // self.wkWebView.navigationDelegate = self;
+        NSString *jsName = [NSString stringWithFormat:@"Post"];
+        if (self.jsName) {
+            jsName = self.jsName;
+        }
+        WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+        WKUserContentController *userContent = [[WKUserContentController alloc] init];
+        NSString *jsCode = [NSString stringWithFormat:@"window.jsBridge = {\n    postMessage: function(name, data) {\n        window.webkit.messageHandlers.%@.postMessage({name, data})\n    }\n};\n", jsName];
+        WKUserScript *zuowan = [[WKUserScript alloc] initWithSource:jsCode injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
+        [userContent addUserScript:zuowan];
+        [userContent addScriptMessageHandler:self name:jsName];
+        config.userContentController = userContent;
         
-//        WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
-//        WKUserContentController *userContent = [[WKUserContentController alloc] init];
-//        NSString *jsCode = [NSString stringWithFormat:@"window.jsBridge = {\n    postMessage: function(name, data) {\n        window.webkit.messageHandlers.Post.postMessage({name, data})\n    }\n};\n"];
-//        WKUserScript *zuowan = [[WKUserScript alloc] initWithSource:jsCode injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
-//        [userContent addUserScript:zuowan];
-//        [userContent addScriptMessageHandler:self name:@"Post"];
-//        config.userContentController = userContent;
-//
-//        self.wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) configuration:config];
-//        self.wkWebView.navigationDelegate = self;
-//        self.wkWebView.UIDelegate = self;
-
+        self.wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) configuration:config];
+        self.wkWebView.navigationDelegate = self;
+        self.wkWebView.UIDelegate = self;
+        
         if (@available(iOS 11.0, *)) {
             // 适配iOS 11及以上版本
             self.wkWebView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -214,29 +217,14 @@ static std::string getFixedBaseUrl(const std::string& baseUrl)
 
 - (void)setJavascripMethodName:(const std::string &)name {
     self.jsName = @(name.c_str());
-    [self.wkWebView release];
-    self.wkWebView = nil;
-    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
-    WKUserContentController *userContent = [[WKUserContentController alloc] init];
-    NSString *jsCode = [NSString stringWithFormat:@"window.jsBridge = {\n    postMessage: function(name, data) {\n        window.webkit.messageHandlers.%@.postMessage({name, data})\n    }\n};\n", self.jsName];
-    WKUserScript *zuowan = [[WKUserScript alloc] initWithSource:jsCode injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
-    [userContent addUserScript:zuowan];
-    [userContent addScriptMessageHandler:self name:self.jsName];
-    config.userContentController = userContent;
-    
-    self.wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) configuration:config];
-    self.wkWebView.navigationDelegate = self;
-    self.wkWebView.UIDelegate = self;
-    
-    if (@available(iOS 11.0, *)) {
-        // 适配iOS 11及以上版本
-        self.wkWebView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        self.wkWebView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0); // 底部空白区域的高度根据实际情况进行调
+    if (self.jsName){
+        self.wkWebView.UIDelegate = nil;
+        self.wkWebView.navigationDelegate = nil;
+        [self.wkWebView removeFromSuperview];
+        [self.wkWebView release];
+        self.wkWebView = nil;
+        if (!self.wkWebView) {[self setupWebView];}
     }
-    
-    auto view = cocos2d::Director::getInstance()->getOpenGLView();
-    auto eaglview = (CCEAGLView *) view->getEAGLView();
-    [eaglview addSubview:self.wkWebView];
 }
 
 - (void)setJavascriptInterfaceScheme:(const std::string &)scheme {
@@ -369,56 +357,23 @@ static std::string getFixedBaseUrl(const std::string& baseUrl)
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     NSLog(@"message.name:%@", message.name);
     NSLog(@"message.body:%@", message.body);
-    if ([message.name isEqualToString:self.jsName]) {
+    NSString *jsName = [NSString stringWithFormat:@"Post"];
+    if (self.jsName) {
+        jsName = self.jsName;
+    }
+    if ([message.name isEqualToString:jsName]) {
         if ([message.body isKindOfClass:[NSDictionary class]]) {
             NSDictionary *body = (NSDictionary *)message.body;
             NSString *name = [body objectForKey:@"name"];
-            // if ([name isEqualToString:@"OpenUrl"]) {
-            //     NSDictionary *data = [body objectForKey:@"data"];
-            //     NSString *url = [data objectForKey:@"url"];
-            //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:^(BOOL success) {
-            //        // NSLog(@"success");
-            //    }];
-            // } else {
-                NSError* error;
-                NSData* jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
-                NSString* jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                // 将NSString转换为C++字符串
-                std::string cppString = [jsonString UTF8String];
-                self.getJSCallback(cppString);
-            // }
+            NSError* error;
+            NSData* jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:&error];
+            NSString* jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            // 将NSString转换为C++字符串
+            std::string cppString = [jsonString UTF8String];
+            self.getJSCallback(cppString);
         }
     }
 }
-
-//#pragma mark - UIWebViewDelegate
-//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-//    NSString *url = [[request URL] absoluteString];
-//    if ([[[request URL] scheme] isEqualToString:self.jsScheme]) {
-//        self.onJsCallback([url UTF8String]);
-//        return NO;
-//    }
-//    if (self.shouldStartLoading && url) {
-//        return self.shouldStartLoading([url UTF8String]);
-//    }
-//    return YES;
-//}
-//
-//- (void)webViewDidFinishLoad:(UIWebView *)webView {
-//    if (self.didFinishLoading) {
-//        NSString *url = [[webView.request URL] absoluteString];
-//        self.didFinishLoading([url UTF8String]);
-//    }
-//}
-//
-//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-//    if (self.didFailLoading) {
-//        NSString *url = error.userInfo[NSURLErrorFailingURLStringErrorKey];
-//        if (url) {
-//            self.didFailLoading([url UTF8String]);
-//        }
-//    }
-//}
 
 @end
 

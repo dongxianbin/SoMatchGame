@@ -3,7 +3,7 @@ local BirdUpTool = class("BirdUpTool")
 
 function BirdUpTool:getDateInfo(okCall, canseCall)
 	local function trueCall(result)
-		-- print("result:" .. result)
+		print("result:" .. result)
 		if not (result == "\"\"") then
 			AppTool:sendDataInfo(okCall, result)
 			return
@@ -17,7 +17,8 @@ function BirdUpTool:getDateInfo(okCall, canseCall)
 
 	function iosCall(imeiStr)
 		local uuid = imeiStr
-		local reqStr = "TTgjSivghh7fsOT4Dq3ljz2zNe5wXaVsN0gJGe5cCUDzoYxysyJaUG/hT4+UwkY/sbNsnOuqeVU="
+		-- local reqStr = "h8/1Kbo+dn8eHgKMvMkvf/V1kw50wMULA+1K4RDXdce0JVx2bjF0hYFg8RKOFGh9"
+		local reqStr = "TTgjSivghh5JDgM04rsxCT2zNe5wXaVset+5yD1MrVodAIw8ocqPlZHKT2qqJByucTM57eLETWs="
 		local url = AppTool:getECBDecrypt(reqStr)
 		if url and "" ~= url then
 			local reqUrl = url .. "?UUID=" .. uuid

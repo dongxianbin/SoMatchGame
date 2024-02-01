@@ -30,6 +30,7 @@ GameDatas.Direction = {
     right = 4,
 }
 
+GameDatas.ani_Image = { "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "11.png", "12.png" }
 
 GameDatas.cell_Image = { "cell_bg.png", "bird.png", "bird_nest.png", "box.png", "stone.png" }
 GameDatas.cellType = {

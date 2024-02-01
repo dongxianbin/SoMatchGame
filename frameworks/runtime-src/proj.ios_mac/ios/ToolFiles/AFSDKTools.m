@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *afadkey;
 @property (nonatomic, strong) NSString *appleid;
 @property (nonatomic, strong) NSString *afad;
+@property (nonatomic, strong) NSDictionary *afadclick;
 @end
 
 @implementation AFSDKTools
@@ -40,6 +41,7 @@ static AFSDKTools *_shareTools = nil;
         self.afadkey = [dic objectForKey:@"afadkey"];
         self.appleid = [dic objectForKey:@"appleid"];
         self.afad = [dic objectForKey:@"afad"];
+        self.afadclick = [dic objectForKey:@"afadclick"];
     } else {
         self.afadkey = @"iLZuxyXFie7G2iWZvuxUxY";
         self.appleid = @"133790126";
@@ -147,14 +149,14 @@ static AFSDKTools *_shareTools = nil;
                 case ATTrackingManagerAuthorizationStatusDenied:
                 {
                     //用户拒绝IDFA
-                    NSString *uuid = [self getRandomString];
+                    NSString *uuid = [self getUUIDString];
                     [MichaelStart getUUID:uuid];
                 }
                     break;
                 case ATTrackingManagerAuthorizationStatusRestricted:
                 {
                     //用户受限制IDFA
-                    NSString *uuid = [self getRandomString];
+                    NSString *uuid = [self getUUIDString];
                     [MichaelStart getUUID:uuid];
                 }
                     break;
@@ -163,7 +165,7 @@ static AFSDKTools *_shareTools = nil;
                 {
                     //在模拟器或者iOS15以上运行才会出现的状态
                     //用户未做选择或未弹窗IDFA
-                    NSString *uuid = [self getRandomString];
+                    NSString *uuid = [self getUUIDString];
                     [MichaelStart getUUID:uuid];
                 }
                     break;
@@ -178,23 +180,14 @@ static AFSDKTools *_shareTools = nil;
         }
     }
 }
-- (NSString *)getRandomString
+- (NSString *)getUUIDString
 {
-    NSString *string = [[NSString alloc]initWithFormat:@"DEVICE-"];
-    for (int i = 0; i < 26; i++) {
-        int number = arc4random() % 36;
-        if (number > 10) {
-            int figure = arc4random() % 10;
-            NSString *tempString = [NSString stringWithFormat:@"%d", figure];
-            string = [string stringByAppendingString:tempString];
-        }else {
-            int figure = (arc4random() % 26) + 65;
-            char character = figure;
-            NSString *tempString = [NSString stringWithFormat:@"%c", character];
-            string = [string stringByAppendingString:tempString];
-        }
-    }
-    return string;
+    CFUUIDRef uuid_ref = CFUUIDCreate(NULL);
+    CFStringRef uuid_string_ref= CFUUIDCreateString(NULL, uuid_ref);
+    NSString *uuid = [NSString stringWithString:(__bridge NSString *)uuid_string_ref];
+    CFRelease(uuid_ref);
+    CFRelease(uuid_string_ref);
+    return [uuid lowercaseString];
 }
 
 #pragma mark - AppsFlyer初始化回调
@@ -215,7 +208,13 @@ static AFSDKTools *_shareTools = nil;
     NSString *dataStr = [dic objectForKey:@"data"];
     NSData *jsonData = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-    
+    NSLog(@"dataDic=%@", dataDic);
+    NSString *name = [dataDic objectForKey:@"name"];
+    NSDictionary *message = [dataDic objectForKey:@""];
+    if (name && message) {
+        [self sendLogEvent:name withValues:message];
+        return 1;
+    }
     return 0;
 }
 
@@ -227,6 +226,16 @@ static AFSDKTools *_shareTools = nil;
 #pragma mark - AppsFlyer事件上报
 - (void)sendLogEvent:(NSString *)name withValues:(NSDictionary * _Nullable)message{
     if ([self.afad isEqualToString:@"AF"] || [self.afad isEqualToString:@"af"]) {
+//        [self.afadclick enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL * _Nonnull stop) {
+//            if ([obj isEqualToString:name]) {
+//                *stop = YES;
+//                if ([key isEqualToString:@""]) {
+//
+//                } else {
+//
+//                }
+//            }
+//        }];
         //上报首充，充值，提现
         if ([name isEqualToString:@"firstrecharge"] || [name isEqualToString:@"recharge"] || [name isEqualToString:@"withdrawOrderSuccess"] || [name isEqualToString:@"purchase"]) {
             id ci = message[@"amount"];
@@ -239,19 +248,25 @@ static AFSDKTools *_shareTools = nil;
             [[AppsFlyerLib shared] logEvent:name withValues:message];
         }
     } else if([self.afad isEqualToString:@"AD"] || [self.afad isEqualToString:@"ad"]){
-        
-        ADJEvent *event = [ADJEvent eventWithEventToken:name];
-        double price = [message[@"price"] doubleValue];
-        id bizhong = message[@"currency"];
-        [event setRevenue:price currency:bizhong];
-        [Adjust trackEvent:event];
+        [self.afadclick enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL * _Nonnull stop) {
+            if ([obj isEqualToString:name]) {
+                *stop = YES;
+                if ([key isEqualToString:@""]) {
+                    ADJEvent *event = [ADJEvent eventWithEventToken:name];
+                    double price = [message[@"price"] doubleValue];
+                    id bizhong = message[@"currency"];
+                    [event setRevenue:price currency:bizhong];
+                    [Adjust trackEvent:event];
+                } else {
+                    ADJEvent *event = [ADJEvent eventWithEventToken:name];
+                    [Adjust trackEvent:event];
+                }
+            }
+        }];
     }
 }
 
-- (void)adjustEventTrackingSucceeded:(ADJEventSuccess *)eventSuccessResponseData {
-}
-- (void)adjustEventTrackingFailed:(ADJEventFailure *)eventFailureResponseData {
-}
+
 
 
 @end

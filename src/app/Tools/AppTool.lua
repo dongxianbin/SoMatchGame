@@ -68,6 +68,7 @@ function AppTool:getIMEI(iosCall)
         if ok and ret and "" ~= ret then
             cc.UserDefault:getInstance():setStringForKey(key, ret)
             imei = ret
+            iosCall(imei)
         end
     end
     return imei

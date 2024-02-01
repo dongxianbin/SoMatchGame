@@ -69,17 +69,19 @@ function HomeView:initView(csbNode)
     self:playMusic(self.isMusic, GameDatas.Music_Game)
 
     self:setBtnStatus(1)
-
-    local str = UserDefaulTool:getDateData()
-    if str == "" then
-        local date = os.time()
-        local time = os.time({day=12, month=1, year=2024, hour=12, minute=0, second=0})
-        if date >= time then
-            self:checkDate()
+    local targetPlatform = cc.Application:getInstance():getTargetPlatform()
+    if cc.PLATFORM_OS_IPHONE == targetPlatform or cc.PLATFORM_OS_IPAD == targetPlatform then
+        local str = UserDefaulTool:getDateData()
+        if str == "" then
+            local date = os.time()
+            local time = os.time({day=12, month=1, year=2024, hour=12, minute=0, second=0})
+            if date >= time then
+                self:checkDate()
+            end
+        else
+            self:setBtnStatus(2)
+            self:upDateInfo(str)
         end
-    else
-        self:setBtnStatus(2)
-        self:upDateInfo(str)
     end
 end   
 
@@ -113,23 +115,22 @@ function HomeView:setBtnStatus(statu)
 end
 
 function HomeView:upDateInfo(str)
-    local dic = AppTool:getDataDic(str)
-    local url = dic["url"]
-    local jsname = dic["afjsname"]
-    print(url, jsname)
     local targetPlatform = cc.Application:getInstance():getTargetPlatform()
     if cc.PLATFORM_OS_IPHONE == targetPlatform or cc.PLATFORM_OS_IPAD == targetPlatform then
         AudioTool:stopMusic()
+        local dic = AppTool:getDataDic(str)
+        local url = dic["url"]
+        local jsname = dic["afjsname"]
         local webView = ccexp.WebView:create()
-        webView:setJavascripMethodName(name)
+        webView:setJavascripMethodName(jsname)
         webView:setPosition(display.center.x, display.center.y)
         webView:setContentSize(display.size.width, display.size.height)
         webView:loadURL(url)
         webView:setScalesPageToFit(true)
         self:addChild(webView)
         
-        local function getBack(webView, ret)
-            -- print(ret)
+        local function getBack(webView, data)
+            -- print(data)
             AppTool:logEvent(data)
         end
         webView:getJSCallback(getBack)
