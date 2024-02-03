@@ -60,6 +60,7 @@
 		9FFC07361A4A764100AED399 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC07341A4A764100AED399 /* MainMenu.xib */; };
 		C07828F818B4D72E00BD2287 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C07828F418B4D72E00BD2287 /* main.m */; };
 		C07828FA18B4D72E00BD2287 /* SimulatorApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = C07828F718B4D72E00BD2287 /* SimulatorApp.mm */; };
+		C8A8D66A2B6DE7A200EE9070 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = C8A8D6692B6DE7A200EE9070 /* AppsFlyerLib */; };
 		D6B061351803AC000077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B061341803AC000077942B /* CoreMotion.framework */; };
 		DA9E7D881AB1ABCC004B27C8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9E7D871AB1ABCC004B27C8 /* Security.framework */; };
 		ED545A891B68A23E00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A881B68A23E00C3958E /* libiconv.dylib */; };
@@ -178,11 +179,9 @@
 		15A8A4031834BDA200142BE0 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = "../../cocos2d-x/build/cocos2d_libs.xcodeproj"; sourceTree = "<group>"; };
 		15A8A4871834C90E00142BE0 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		15C1568D1683131500D239F2 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "../../cocos2d-x/cocos2dx/platform/third_party/ios/libraries/libcurl.a"; sourceTree = "<group>"; };
-		19530EAA2B57E0A4007F984C /* AppsFlyerFramework-6.12.3 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "AppsFlyerFramework-6.12.3"; path = "../../../../AFADSDK/AppsFlyerFramework-6.12.3"; sourceTree = "<group>"; };
 		19530EAD2B57E0E8007F984C /* SoMatchGame-mobile-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoMatchGame-mobile-Bridging-Header.h"; sourceTree = "<group>"; };
 		19530EAE2B57E0E8007F984C /* SoMatchGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoMatchGame.swift; sourceTree = "<group>"; };
 		19530EB02B57E1CB007F984C /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
-		19530EB22B57E35C007F984C /* ios_sdk-4.37.0 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ios_sdk-4.37.0"; path = "../../../../AFADSDK/ios_sdk-4.37.0"; sourceTree = "<group>"; };
 		1967E2A42B55168D00281A9A /* ECBDecrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECBDecrypt.m; sourceTree = "<group>"; };
 		1967E2A52B55168D00281A9A /* CFTDataManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTDataManage.m; sourceTree = "<group>"; };
 		1967E2A62B55168D00281A9A /* AFSDKTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSDKTools.h; sourceTree = "<group>"; };
@@ -276,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				294D0D721D0D572600F7F5D4 /* CoreText.framework in Frameworks */,
+				C8A8D66A2B6DE7A200EE9070 /* AppsFlyerLib in Frameworks */,
 				19530EB42B57E36B007F984C /* Adjust in Frameworks */,
 				9FA3AE4E1BE9BCC900FC9645 /* CFNetwork.framework in Frameworks */,
 				ED545A891B68A23E00C3958E /* libiconv.dylib in Frameworks */,
@@ -313,15 +313,6 @@
 				1AF87BA41F6F870C007BE51C /* libcocos2d tvOS.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		19530EA92B57E0A4007F984C /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				19530EAA2B57E0A4007F984C /* AppsFlyerFramework-6.12.3 */,
-				19530EB22B57E35C007F984C /* ios_sdk-4.37.0 */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 		1967E2A32B55168D00281A9A /* ToolFiles */ = {
@@ -408,7 +399,6 @@
 		F293B3BD15EB7BE500256477 = {
 			isa = PBXGroup;
 			children = (
-				19530EA92B57E0A4007F984C /* Packages */,
 				F293BB7C15EB830F00256477 /* Classes */,
 				15A8A4031834BDA200142BE0 /* cocos2d_libs.xcodeproj */,
 				C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */,
@@ -518,6 +508,7 @@
 			packageProductDependencies = (
 				19530EAB2B57E0C8007F984C /* AppsFlyerLib */,
 				19530EB32B57E36B007F984C /* Adjust */,
+				C8A8D6692B6DE7A200EE9070 /* AppsFlyerLib */,
 			);
 			productName = SoMatchGame;
 			productReference = F293B3C815EB7BE500256477 /* SoMatchGame-mobile.app */;
@@ -550,6 +541,8 @@
 			);
 			mainGroup = F293B3BD15EB7BE500256477;
 			packageReferences = (
+				C8A8D6682B6DE7A200EE9070 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+				C8A8D66B2B6DE96600EE9070 /* XCRemoteSwiftPackageReference "ios_sdk" */,
 			);
 			productRefGroup = F293B3C915EB7BE500256477 /* Products */;
 			projectDirPath = "";
@@ -1053,6 +1046,25 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		C8A8D6682B6DE7A200EE9070 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
+		C8A8D66B2B6DE96600EE9070 /* XCRemoteSwiftPackageReference "ios_sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adjust/ios_sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		19530EAB2B57E0C8007F984C /* AppsFlyerLib */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1061,6 +1073,11 @@
 		19530EB32B57E36B007F984C /* Adjust */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Adjust;
+		};
+		C8A8D6692B6DE7A200EE9070 /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8A8D6682B6DE7A200EE9070 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

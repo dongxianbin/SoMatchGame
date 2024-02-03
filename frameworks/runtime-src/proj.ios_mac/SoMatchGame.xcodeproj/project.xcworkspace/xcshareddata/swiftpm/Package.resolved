@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "appsflyerframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework",
+      "state" : {
+        "revision" : "aabfaf81d95e21f711850e87c60b9ef70b2bc6c4",
+        "version" : "6.9.2"
+      }
+    },
+    {
+      "identity" : "ios_sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/adjust/ios_sdk",
+      "state" : {
+        "branch" : "master",
+        "revision" : "f7a0ad4a9f99fcbfc4c73dcad557ea3c86c5aaf6"
+      }
+    }
+  ],
+  "version" : 2
+}
