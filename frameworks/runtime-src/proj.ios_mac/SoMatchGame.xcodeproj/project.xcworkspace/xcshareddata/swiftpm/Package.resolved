@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework",
       "state" : {
-        "revision" : "aabfaf81d95e21f711850e87c60b9ef70b2bc6c4",
-        "version" : "6.9.2"
+        "revision" : "8de517bea1ee8d0b5a80d3118ba3cdd3a555d94e",
+        "version" : "6.13.0"
       }
     },
     {
